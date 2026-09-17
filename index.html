@@ -14,18 +14,19 @@
   --tape:#F2B705;
   --tape-ink:#3A2C00;
   --done:#2E7D4F;
+  --warn:#B3261E;
   --display:"Chakra Petch","IBM Plex Sans Thai",system-ui,sans-serif;
   --body:"IBM Plex Sans Thai",system-ui,-apple-system,"Sukhumvit Set",sans-serif;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --ground:#0C1A1F;--paper:#13262D;--ink:#E3EEF0;--ink-soft:#9DB5BC;--line:#26424B;
-    --teal:#4FB8C9;--teal-wash:#173840;--tape:#F2B705;--tape-ink:#2A1F00;--done:#5BC48A;
+    --teal:#4FB8C9;--teal-wash:#173840;--tape:#F2B705;--tape-ink:#2A1F00;--done:#5BC48A;--warn:#F28B82;
   }
 }
 :root[data-theme="dark"]{
   --ground:#0C1A1F;--paper:#13262D;--ink:#E3EEF0;--ink-soft:#9DB5BC;--line:#26424B;
-  --teal:#4FB8C9;--teal-wash:#173840;--tape:#F2B705;--tape-ink:#2A1F00;--done:#5BC48A;
+  --teal:#4FB8C9;--teal-wash:#173840;--tape:#F2B705;--tape-ink:#2A1F00;--done:#5BC48A;--warn:#F28B82;
 }
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:0 64px}
@@ -91,6 +92,11 @@ ul.todo{list-style:none;margin:0;padding:0;display:grid;gap:2px}
 .shot.hook .sec{color:var(--tape-ink);background:var(--tape);border-radius:3px;text-align:center;align-self:start}
 .shot p small{display:block;color:var(--ink-soft);font-size:13px}
 
+.sub{font-size:15px;font-weight:600;color:var(--ink-soft);letter-spacing:.04em;margin-bottom:-8px}
+.dont{border:1px solid var(--warn);border-radius:6px;padding:12px 14px;background:var(--paper)}
+.dont strong{font-family:var(--display);color:var(--warn);display:block;font-size:14px}
+.dont ul{margin:4px 0 0;padding-left:1.2em}
+
 /* plan table */
 .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
 table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
@@ -120,9 +126,9 @@ html{scroll-behavior:smooth}
 <header>
   <span class="draft">ฉบับแรก · จะปรับเพิ่มเรื่อยๆ</span>
   <div class="shop">ช่างโต้ คาแค · อรัญญิก พิษณุโลก</div>
-  <h1><span class="nw">ทำช่องให้</span><span class="nw">คนแถวอรัญญิก</span><span class="nw">รู้จักร้าน</span> <span class="nw">ใน 6 ขั้น</span></h1>
+  <h1><span class="nw">ทำช่องให้</span><span class="nw">คนแถวอรัญญิก</span><span class="nw">รู้จักร้าน</span> <span class="nw">ใน 7 ขั้น</span></h1>
   <p class="lede">ทำไล่จากขั้น 1 ไปทีละขั้น ทุกขั้นบอกว่าต้องทำอะไร ทำไปเพื่ออะไร และมีตัวอย่างให้ลอกไปใช้ได้เลย ทำเสร็จข้อไหนก็กดติ๊กไว้ เว็บจะจำไว้ให้ในมือถือเครื่องนี้</p>
-  <div class="plat"><span class="chip">TikTok</span><span class="chip">Facebook เพจ + Reels</span><span class="chip">ล้างรถ · ซักเบาะ · ล้างห้องเครื่อง</span></div>
+  <div class="plat"><span class="chip">TikTok</span><span class="chip">Facebook เพจ + Reels</span><span class="chip">Google Maps</span><span class="chip">ล้างรถ · ซักเบาะ · ล้างห้องเครื่อง</span></div>
 </header>
 
 <div class="bar" aria-label="ความคืบหน้า">
@@ -239,8 +245,61 @@ html{scroll-behavior:smooth}
   </div>
 </section>
 
-<section class="step" id="s6" data-title="แผน 4 สัปดาห์">
+<section class="step" id="sg" data-title="รีวิว Google Maps">
   <div class="num">6</div>
+  <div class="body">
+    <div class="when">ตั้งค่าครั้งเดียว แล้วขอรีวิวจากลูกค้าทุกคัน · เป้าหมายเดือนแรก 10 รีวิว</div>
+    <h2>เก็บรีวิวใน Google Maps จากลูกค้าจริง</h2>
+    <div class="why"><strong>ทำเพื่ออะไร</strong>คนที่ค้นว่า "ล้างรถใกล้ฉัน" มักเลือกร้านที่มีดาวและรีวิวเยอะกว่า รีวิวที่เล่าว่ามาทำอะไร เช่น ล้างห้องเครื่องหรือซักเบาะ ยังช่วยให้ร้านขึ้นในผลค้นหาของบริการนั้นด้วย</div>
+
+    <h3 class="sub">ตั้งค่าครั้งเดียว</h3>
+    <ul class="todo">
+      <li><label><input type="checkbox" id="cga"><span>เข้า <b>business.google.com</b> แล้วสร้างหรือขอเป็นเจ้าของหมุดร้าน จากนั้นยืนยันตัวตนตามที่ Google ให้ทำ เช่น ถ่ายวิดีโอหน้าร้าน</span></label></li>
+      <li><label><input type="checkbox" id="cgb"><span>เลือกประเภทธุรกิจเป็น <b>"บริการล้างรถ"</b> แล้วเพิ่มบริการ ได้แก่ ล้างรถ ซักเบาะ และล้างห้องเครื่อง</span></label></li>
+      <li><label><input type="checkbox" id="cgc"><span>ลงรูปอย่างน้อย 10 รูป ได้แก่ ป้ายหน้าร้าน ทางเข้า ที่นั่งรอ และภาพก่อน–หลัง</span></label></li>
+      <li><label><input type="checkbox" id="cgd"><span>กด <b>"ขอรีวิว"</b> (Ask for reviews) ในหน้าจัดการร้าน แล้วคัดลอกลิงก์รีวิวของร้านเก็บไว้</span></label></li>
+      <li><label><input type="checkbox" id="cge"><span>นำลิงก์ไปสร้าง QR Code แล้วพิมพ์ติดไว้ที่ที่นั่งรอและจุดรับรถ</span></label></li>
+    </ul>
+
+    <h3 class="sub">ทำกับลูกค้าทุกคัน</h3>
+    <ul class="todo">
+      <li><label><input type="checkbox" id="cgf"><span>ขอรีวิวตอน <b>ส่งมอบรถ</b> ซึ่งเป็นตอนที่ลูกค้าเพิ่งเห็นรถสะอาด พร้อมชี้ให้สแกน QR ทันที</span></label></li>
+      <li><label><input type="checkbox" id="cgg"><span>ลูกค้าที่รีบกลับ ให้ส่งลิงก์รีวิวทาง LINE หรือแชทเพจภายในวันนั้น โดยใช้ข้อความด้านล่าง</span></label></li>
+      <li><label><input type="checkbox" id="cgh"><span>ตอบทุกรีวิวภายใน 1–2 วัน รวมถึงรีวิวที่ติด ให้ขอบคุณและบอกว่าจะปรับปรุงอะไร</span></label></li>
+      <li><label><input type="checkbox" id="cgi"><span>ทุกวันอาทิตย์ จดจำนวนรีวิวและคะแนนดาวไว้ดูว่าเพิ่มขึ้นหรือเปล่า</span></label></li>
+    </ul>
+
+    <div class="ex">
+      <div class="ex-h"><span>พูดตอนส่งมอบรถ</span></div>
+      <p class="sample">"รถเสร็จแล้วครับ ถ้าพอใจ ช่วยรีวิวร้านใน Google ให้หน่อยได้ไหมครับ สแกนตรงนี้ได้เลย ใช้เวลาไม่ถึงนาที ถ้าเล่าด้วยว่ามาทำอะไร จะช่วยร้านได้มากเลยครับ"</p>
+    </div>
+    <div class="ex">
+      <div class="ex-h"><span>ข้อความส่งทาง LINE / แชท</span><button class="copy" data-copy="rv">คัดลอก</button></div>
+      <p class="sample" id="rv">ขอบคุณที่ใช้บริการช่างโต้ คาแค นะครับ 🙏
+ถ้าพอใจกับงาน รบกวนช่วยรีวิวร้านใน Google ให้หน่อยครับ
+<span class="fill">วางลิงก์รีวิวของร้าน</span>
+เล่าสั้นๆ ว่ามาทำอะไรก็ได้ครับ เช่น ล้างรถ ซักเบาะ หรือล้างห้องเครื่อง</p>
+    </div>
+    <div class="ex">
+      <div class="ex-h"><span>ตัวอย่างตอบรีวิว</span></div>
+      <p class="sample"><b>รีวิวชม:</b> ขอบคุณมากครับคุณ<span class="fill">ชื่อลูกค้า</span> ดีใจที่ชอบงานล้างห้องเครื่องครับ แวะมาใหม่ได้ทุกเมื่อที่อรัญญิกเลยครับ
+<b>รีวิวติ:</b> ขอบคุณที่บอกนะครับ เรื่อง<span class="fill">ปัญหาที่ลูกค้าบอก</span> ทางร้านจะปรับปรุงครับ ถ้าสะดวก ทักแชทเพจมาได้เลย ร้านจะดูแลให้ครับ</p>
+    </div>
+
+    <div class="dont">
+      <strong>ห้ามทำ เพราะขัดกฎของ Google และรีวิวอาจถูกลบ</strong>
+      <ul>
+        <li>จ้างคนมารีวิว หรือให้เพื่อน ญาติ และลูกน้องมารีวิวแทนลูกค้า</li>
+        <li>ให้ส่วนลดหรือของแถมแลกกับการรีวิว</li>
+        <li>เลือกขอรีวิวเฉพาะลูกค้าที่คิดว่าจะให้ 5 ดาว ให้ขอจากลูกค้าทุกคนเท่ากัน</li>
+        <li>เขียนรีวิวไว้ให้ลูกค้า แล้วให้ลูกค้าโพสต์ตาม</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="step" id="s6" data-title="แผน 4 สัปดาห์">
+  <div class="num">7</div>
   <div class="body">
     <div class="when">เดือนแรก · สัปดาห์ละ 3 คลิป</div>
     <h2>ทำตามแผน 4 สัปดาห์ แล้วดูตัวเลขทุกวันอาทิตย์</h2>
@@ -249,7 +308,7 @@ html{scroll-behavior:smooth}
       <table>
         <thead><tr><th>สัปดาห์</th><th>ธีม</th><th>ตัวอย่างคลิป</th></tr></thead>
         <tbody>
-          <tr><td>สัปดาห์ 1</td><td>ก่อน–หลัง</td><td>ใช้ 3 สคริปต์จากขั้นที่ 3</td></tr>
+          <tr><td>สัปดาห์ 1</td><td>ก่อน–หลัง</td><td>ใช้ 3 สคริปต์จากขั้นที่ 3 · ตั้งค่าร้านใน Google และติด QR สำหรับรีวิว</td></tr>
           <tr><td>สัปดาห์ 2</td><td>ความรู้สั้นๆ</td><td>"ทำไมควรล้างห้องเครื่อง" · "เบาะมีกลิ่นอับเกิดจากอะไร" · "ราคาแต่ละบริการ"</td></tr>
           <tr><td>สัปดาห์ 3</td><td>ให้คนรู้จักช่างโต้</td><td>หนึ่งวันในร้าน · ลูกค้าจริงเล่าความรู้สึกหลังรับรถ · รถคันที่หนักที่สุดของเดือน</td></tr>
           <tr><td>สัปดาห์ 4</td><td>ชวนมาร้าน</td><td>โปรพิเศษสำหรับคนอรัญญิก · ทำคลิปแบบเดียวกับคลิปที่มีคนดูเยอะที่สุด</td></tr>
