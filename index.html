@@ -1,0 +1,316 @@
+<title>คู่มือช่อง ช่างโต้ คาแค</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#EEF4F5;
+  --paper:#FFFFFF;
+  --ink:#10303A;
+  --ink-soft:#4A6670;
+  --line:#CFDDE0;
+  --teal:#136F80;
+  --teal-wash:#DCEEF1;
+  --tape:#F2B705;
+  --tape-ink:#3A2C00;
+  --done:#2E7D4F;
+  --display:"Chakra Petch","IBM Plex Sans Thai",system-ui,sans-serif;
+  --body:"IBM Plex Sans Thai",system-ui,-apple-system,"Sukhumvit Set",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0C1A1F;--paper:#13262D;--ink:#E3EEF0;--ink-soft:#9DB5BC;--line:#26424B;
+    --teal:#4FB8C9;--teal-wash:#173840;--tape:#F2B705;--tape-ink:#2A1F00;--done:#5BC48A;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0C1A1F;--paper:#13262D;--ink:#E3EEF0;--ink-soft:#9DB5BC;--line:#26424B;
+  --teal:#4FB8C9;--teal-wash:#173840;--tape:#F2B705;--tape-ink:#2A1F00;--done:#5BC48A;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:720px;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1.25;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--tape);outline-offset:2px}
+
+/* header */
+header{padding-block:28px 20px;display:grid;gap:14px}
+.draft{justify-self:start;background:var(--tape);color:var(--tape-ink);font-weight:600;font-size:13px;padding:2px 10px;transform:rotate(-1.5deg);letter-spacing:.02em}
+.shop{font-family:var(--display);font-size:14px;letter-spacing:.08em;color:var(--teal);font-weight:600}
+h1{font-size:clamp(30px,7vw,44px);font-weight:700}
+.lede{color:var(--ink-soft);max-width:36em}
+.plat{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;border:1px solid var(--line);background:var(--paper);padding:2px 10px;border-radius:999px;color:var(--ink-soft)}
+
+/* progress */
+.bar{position:sticky;top:0;z-index:5;background:var(--ground);padding-block:10px;border-bottom:1px solid var(--line);display:grid;gap:8px}
+.bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px}
+.bar-top b{font-family:var(--display);font-variant-numeric:tabular-nums}
+.meter{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--teal);transition:width .3s}
+.jump{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.jump a{flex:none;text-decoration:none;font-family:var(--display);font-size:13px;font-weight:600;color:var(--ink-soft);border:1px solid var(--line);background:var(--paper);padding:3px 10px;border-radius:6px}
+.jump a.ok{color:var(--done);border-color:var(--done)}
+
+/* steps */
+main{display:grid;gap:40px;padding-top:32px}
+.step{display:grid;grid-template-columns:52px 1fr;gap:4px 16px;scroll-margin-top:110px}
+.num{font-family:var(--display);font-size:40px;font-weight:700;line-height:1;color:var(--teal);font-variant-numeric:tabular-nums}
+.step.complete .num{color:var(--done)}
+.body{display:grid;gap:14px;min-width:0}
+.body h2{font-size:24px;font-weight:600}
+.when{font-size:13px;color:var(--ink-soft);font-family:var(--display);letter-spacing:.04em}
+.why{background:var(--teal-wash);padding:12px 14px;border-radius:4px}
+.why strong{font-family:var(--display);color:var(--teal);display:block;font-size:14px;letter-spacing:.04em}
+
+ul.todo{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.todo label{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;padding:8px 4px;cursor:pointer;border-radius:4px}
+.todo label:hover{background:var(--paper)}
+.todo input{width:20px;height:20px;margin:4px 0 0;accent-color:var(--done)}
+.todo input:checked + span{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--done)}
+
+.ex{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;gap:10px}
+.ex-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.ex-h span{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--ink-soft)}
+.copy{font:600 13px var(--display);background:var(--ink);color:var(--paper);border:0;border-radius:4px;padding:4px 12px;cursor:pointer}
+.sample{white-space:pre-line;font-size:15px}
+.tag{color:var(--teal);font-weight:500}
+.fill{background:var(--tape);color:var(--tape-ink);padding:0 4px;border-radius:2px;font-size:.92em}
+
+/* scripts */
+.scripts{display:grid;gap:14px}
+.script{background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.script h3{font-size:17px;padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.script h3 small{font-family:var(--body);font-weight:400;color:var(--ink-soft);font-size:13px}
+.shot{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 16px;border-top:1px dashed var(--line)}
+.shot:first-of-type{border-top:0}
+.sec{font-family:var(--display);font-weight:600;font-size:13px;color:var(--teal);font-variant-numeric:tabular-nums;padding-top:2px}
+.shot.hook .sec{color:var(--tape-ink);background:var(--tape);border-radius:3px;text-align:center;align-self:start}
+.shot p small{display:block;color:var(--ink-soft);font-size:13px}
+
+/* plan table */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.04em;color:var(--ink-soft)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--display);font-weight:600;white-space:nowrap}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.metric{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.metric b{font-family:var(--display);display:block}
+.metric span{font-size:14px;color:var(--ink-soft)}
+
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer button{font:600 13px var(--display);background:none;border:1px solid var(--line);color:var(--ink-soft);border-radius:4px;padding:4px 12px;cursor:pointer}
+
+@media (max-width:480px){
+  .step{grid-template-columns:1fr}
+  .num{font-size:32px}
+  .shot{grid-template-columns:64px 1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="draft">ฉบับแรก · จะปรับเพิ่มเรื่อยๆ</span>
+  <div class="shop">ช่างโต้ คาแค · อรัญญิก พิษณุโลก</div>
+  <h1>ทำช่องให้คนแถวอรัญญิกรู้จักร้าน ใน 6 ขั้น</h1>
+  <p class="lede">ทำไล่จากขั้น 1 ไปทีละขั้น ทุกขั้นบอกว่าต้องทำอะไร ทำไปเพื่ออะไร และมีตัวอย่างให้ลอกไปใช้ได้เลย ทำเสร็จข้อไหนก็กดติ๊กไว้ เว็บจะจำไว้ให้ในมือถือเครื่องนี้</p>
+  <div class="plat"><span class="chip">TikTok</span><span class="chip">Facebook เพจ + Reels</span><span class="chip">ล้างรถ · ซักเบาะ · ล้างห้องเครื่อง</span></div>
+</header>
+
+<div class="bar" aria-label="ความคืบหน้า">
+  <div class="bar-top"><span>ทำไปแล้ว</span><b id="count">0 / 0 ข้อ</b></div>
+  <div class="meter"><i id="fill"></i></div>
+  <nav class="jump" id="jump"></nav>
+</div>
+
+<main>
+
+<section class="step" id="s1" data-title="แต่งหน้าช่อง">
+  <div class="num">1</div>
+  <div class="body">
+    <div class="when">ทำวันแรก · ใช้เวลาราว 30 นาที</div>
+    <h2>แต่งหน้าช่องให้คนเห็นแล้วรู้ทันทีว่าร้านอยู่ไหน</h2>
+    <div class="why"><strong>ทำเพื่ออะไร</strong>คนที่เห็นคลิปจะกดเข้ามาดูหน้าช่องแค่ไม่กี่วินาที ถ้าไม่เห็นว่าร้านอยู่อรัญญิก ทำอะไรได้บ้าง และติดต่อยังไง เขาก็จะปัดผ่านไปเลย</div>
+    <ul class="todo">
+      <li><label><input type="checkbox" id="c1a"><span>ตั้งชื่อช่องให้มีทั้ง <b>ชื่อร้าน</b> และ <b>ชื่อจังหวัด</b> เช่น "ช่างโต้ คาแค พิษณุโลก"</span></label></li>
+      <li><label><input type="checkbox" id="c1b"><span>ใช้รูปโปรไฟล์เป็นโลโก้ร้าน หรือรูปหน้าร้านที่เห็นป้ายชัดๆ ทั้ง TikTok และเพจ</span></label></li>
+      <li><label><input type="checkbox" id="c1c"><span>เขียนคำอธิบายช่อง (Bio) ตามตัวอย่างด้านล่าง</span></label></li>
+      <li><label><input type="checkbox" id="c1d"><span>ในเพจ Facebook ให้ใส่ที่อยู่ เวลาเปิด-ปิด (ใส่ภายหลังได้) และปุ่ม "ส่งข้อความ"</span></label></li>
+      <li><label><input type="checkbox" id="c1e"><span>ปักหมุดร้านใน Google Maps เพื่อให้คนค้นว่า "ล้างรถใกล้ฉัน" แล้วเจอร้าน</span></label></li>
+    </ul>
+    <div class="ex">
+      <div class="ex-h"><span>ตัวอย่าง BIO</span><button class="copy" data-copy="bio">คัดลอก</button></div>
+      <p class="sample" id="bio">ล้างรถ · ซักเบาะ · ล้างห้องเครื่อง
+อรัญญิก อ.เมือง พิษณุโลก
+จองคิว ☎ <span class="fill">ใส่เบอร์ร้าน</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="step" id="s2" data-title="เตรียมถ่าย">
+  <div class="num">2</div>
+  <div class="body">
+    <div class="when">ทำก่อนถ่ายคลิปแรก</div>
+    <h2>เตรียมตัวถ่ายด้วยมือถือเครื่องเดียว</h2>
+    <div class="why"><strong>ทำเพื่ออะไร</strong>ไม่ต้องใช้กล้องแพง แต่ภาพต้องชัดและเป็นแนวตั้ง เพราะคนดู TikTok และ Reels ถือมือถือแนวตั้ง ภาพที่เต็มจอจะทำให้คนดูนานกว่า</div>
+    <ul class="todo">
+      <li><label><input type="checkbox" id="c2a"><span>ถ่ายแนวตั้งทุกครั้ง (9:16) และเช็ดเลนส์กล้องก่อนถ่าย</span></label></li>
+      <li><label><input type="checkbox" id="c2b"><span>หาขาตั้งมือถือหรือที่หนีบ ราคาไม่กี่ร้อยบาท จะได้ถ่ายไปด้วยทำงานไปด้วย</span></label></li>
+      <li><label><input type="checkbox" id="c2c"><span>ถ่ายภาพ <b>"ก่อนทำ"</b> ทุกคันก่อนลงมือ เพราะถ้าลืมถ่ายไว้ จะย้อนกลับไปถ่ายไม่ได้</span></label></li>
+      <li><label><input type="checkbox" id="c2d"><span>ขออนุญาตลูกค้าก่อนถ่าย และเบลอป้ายทะเบียนก่อนโพสต์</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<section class="step" id="s3" data-title="คลิปแรก">
+  <div class="num">3</div>
+  <div class="body">
+    <div class="when">สัปดาห์แรก · 3 คลิป ยาวคลิปละ 15–30 วินาที</div>
+    <h2>ทำคลิป "ก่อน–หลัง" จากงานจริงในร้าน</h2>
+    <div class="why"><strong>ทำเพื่ออะไร</strong>ภาพรถสกปรกที่กลับมาสะอาดคือสิ่งที่ทำให้คนหยุดนิ้วดูมากที่สุด และยังเป็นหลักฐานว่าร้านทำงานดีด้วย ต้องให้ช่วง <b>3 วินาทีแรก</b> น่าสนใจ ไม่อย่างนั้นคนจะปัดทิ้ง</div>
+    <div class="scripts">
+      <article class="script">
+        <h3>ล้างห้องเครื่อง <small>คลิปที่ 1</small></h3>
+        <div class="shot hook"><div class="sec">0–3 วิ</div><p>ซูมเข้าห้องเครื่องที่คราบน้ำมันเยอะ<small>ขึ้นข้อความ: "ห้องเครื่องรถคุณเป็นแบบนี้อยู่ไหม?"</small></p></div>
+        <div class="shot"><div class="sec">3–18 วิ</div><p>ตัดสลับตอนฉีดโฟม ขัดด้วยแปรง และล้างน้ำ<small>พูดสั้นๆ: "ล้างแบบนี้ ไม่โดนกล่องไฟนะครับ"</small></p></div>
+        <div class="shot"><div class="sec">18–25 วิ</div><p>ถ่ายภาพหลังล้างเสร็จจากมุมเดียวกับตอนแรก</p></div>
+        <div class="shot"><div class="sec">25–30 วิ</div><p>ช่างโต้พูดหน้ากล้อง<small>"ล้างห้องเครื่องที่อรัญญิก ทักแชทจองคิวได้เลยครับ"</small></p></div>
+      </article>
+      <article class="script">
+        <h3>ซักเบาะ <small>คลิปที่ 2</small></h3>
+        <div class="shot hook"><div class="sec">0–3 วิ</div><p>ยกถังน้ำที่ได้จากการซักเบาะ ให้เห็นว่าน้ำขุ่นแค่ไหน<small>ขึ้นข้อความ: "น้ำที่ซักจากเบาะรถคันเดียว"</small></p></div>
+        <div class="shot"><div class="sec">3–15 วิ</div><p>ถ่ายตอนเครื่องดูดผ่านเบาะ ให้เห็นแถบที่สะอาดตัดกับส่วนที่ยังไม่ได้ซัก</p></div>
+        <div class="shot"><div class="sec">15–22 วิ</div><p>แพนกล้องให้เห็นภายในรถทั้งคันหลังทำเสร็จ</p></div>
+        <div class="shot"><div class="sec">22–25 วิ</div><p>ขึ้นข้อความ<small>"กลิ่นอับหาย · ช่างโต้ คาแค พิษณุโลก"</small></p></div>
+      </article>
+      <article class="script">
+        <h3>ล้างรถ <small>คลิปที่ 3</small></h3>
+        <div class="shot hook"><div class="sec">0–3 วิ</div><p>ถ่ายรถกระบะเปื้อนโคลนเต็มคันเข้ามาจอดในร้าน<small>ขึ้นข้อความ: "ล้างคันนี้ใช้เวลากี่นาที?"</small></p></div>
+        <div class="shot"><div class="sec">3–15 วิ</div><p>ตั้งกล้องถ่ายแบบเร่งความเร็ว (Time-lapse) ตั้งแต่ฉีดน้ำ ลงโฟม ไปจนถึงเช็ดแห้ง</p></div>
+        <div class="shot"><div class="sec">15–20 วิ</div><p>ถ่ายรถที่ล้างเสร็จแล้ว พร้อมขึ้นเวลาที่ใช้จริง<small>"ใช้เวลา <span class="fill">xx</span> นาที"</small></p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="step" id="s4" data-title="โพสต์ให้คนพิษณุโลกเห็น">
+  <div class="num">4</div>
+  <div class="body">
+    <div class="when">ทุกครั้งที่โพสต์</div>
+    <h2>โพสต์แบบที่ทำให้คนในพื้นที่มองเห็น</h2>
+    <div class="why"><strong>ทำเพื่ออะไร</strong>TikTok และ Facebook มักแสดงคลิปให้คนที่อยู่ใกล้ตำแหน่งที่ติดไว้ ถ้าในแคปชันมีชื่อพื้นที่ คลิปก็มีโอกาสไปถึงคนพิษณุโลกที่จะขับรถมาร้านได้จริงมากขึ้น</div>
+    <ul class="todo">
+      <li><label><input type="checkbox" id="c4a"><span>ติดตำแหน่งร้าน (Location) ทุกโพสต์</span></label></li>
+      <li><label><input type="checkbox" id="c4b"><span>เขียนชื่อพื้นที่ในแคปชัน และใส่ชื่อสถานที่ใกล้ร้านที่คนแถวนั้นรู้จัก</span></label></li>
+      <li><label><input type="checkbox" id="c4c"><span>ลงคลิปเดียวกันทั้ง TikTok และ Facebook Reels</span></label></li>
+      <li><label><input type="checkbox" id="c4d"><span>แชร์คลิปไปกลุ่ม Facebook ของคนพิษณุโลก เช่น กลุ่มชุมชนหรือกลุ่มซื้อขายในจังหวัด</span></label></li>
+      <li><label><input type="checkbox" id="c4e"><span>โพสต์ช่วงที่คนเล่นมือถือเยอะ คือ <b>11:30–13:00</b> หรือ <b>18:00–21:00</b></span></label></li>
+    </ul>
+    <div class="ex">
+      <div class="ex-h"><span>ตัวอย่างแคปชัน + แฮชแท็ก</span><button class="copy" data-copy="cap">คัดลอก</button></div>
+      <p class="sample" id="cap">ห้องเครื่องคันนี้ไม่ได้ล้างมา 3 ปี 😅 ล้างเสร็จแล้วเหมือนได้รถใหม่
+📍 ช่างโต้ คาแค อรัญญิก ใกล้<span class="fill">ชื่อสถานที่ใกล้ร้าน</span>
+ทักแชทจองคิวได้เลยครับ
+<span class="tag">#พิษณุโลก #อรัญญิก #ล้างรถพิษณุโลก #คาร์แคร์พิษณุโลก #ล้างห้องเครื่อง #ช่างโต้คาแค</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="step" id="s5" data-title="ตอบแชท">
+  <div class="num">5</div>
+  <div class="body">
+    <div class="when">ทุกวัน · ใช้เวลาวันละ 10 นาที</div>
+    <h2>ตอบคอมเมนต์และแชทให้ไว</h2>
+    <div class="why"><strong>ทำเพื่ออะไร</strong>คนที่ถามราคาคือคนที่เกือบจะมาใช้บริการแล้ว ถ้าตอบช้าเขาอาจไปร้านอื่น และคลิปที่มีคนคุยกันเยอะก็จะถูกแสดงให้คนเห็นมากขึ้นด้วย</div>
+    <ul class="todo">
+      <li><label><input type="checkbox" id="c5a"><span>ตอบทุกคอมเมนต์ภายในวันเดียวกัน แม้แค่พิมพ์ว่า "ขอบคุณครับ" ก็ได้</span></label></li>
+      <li><label><input type="checkbox" id="c5b"><span>ปักหมุดคอมเมนต์ที่บอกราคาเริ่มต้นและวิธีจองคิวไว้บนสุด</span></label></li>
+      <li><label><input type="checkbox" id="c5c"><span>ตั้งข้อความตอบกลับอัตโนมัติในเพจ Facebook</span></label></li>
+      <li><label><input type="checkbox" id="c5d"><span>ถามลูกค้าทุกคนว่า "รู้จักร้านจากไหนครับ?" แล้วจดคำตอบไว้</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<section class="step" id="s6" data-title="แผน 4 สัปดาห์">
+  <div class="num">6</div>
+  <div class="body">
+    <div class="when">เดือนแรก · สัปดาห์ละ 3 คลิป</div>
+    <h2>ทำตามแผน 4 สัปดาห์ แล้วดูตัวเลขทุกวันอาทิตย์</h2>
+    <div class="why"><strong>ทำเพื่ออะไร</strong>คลิปเดียวยังไม่ทำให้คนจำร้านได้ ต้องโพสต์สม่ำเสมอ แล้วดูว่าคลิปแบบไหนมีคนดูเยอะ จากนั้นก็ทำคลิปแบบนั้นเพิ่ม</div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>สัปดาห์</th><th>ธีม</th><th>ตัวอย่างคลิป</th></tr></thead>
+        <tbody>
+          <tr><td>สัปดาห์ 1</td><td>ก่อน–หลัง</td><td>ใช้ 3 สคริปต์จากขั้นที่ 3</td></tr>
+          <tr><td>สัปดาห์ 2</td><td>ความรู้สั้นๆ</td><td>"ทำไมควรล้างห้องเครื่อง" · "เบาะมีกลิ่นอับเกิดจากอะไร" · "ราคาแต่ละบริการ"</td></tr>
+          <tr><td>สัปดาห์ 3</td><td>ให้คนรู้จักช่างโต้</td><td>หนึ่งวันในร้าน · ลูกค้าจริงเล่าความรู้สึกหลังรับรถ · รถคันที่หนักที่สุดของเดือน</td></tr>
+          <tr><td>สัปดาห์ 4</td><td>ชวนมาร้าน</td><td>โปรพิเศษสำหรับคนอรัญญิก · ทำคลิปแบบเดียวกับคลิปที่มีคนดูเยอะที่สุด</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="metrics">
+      <div class="metric"><b>ยอดวิว</b><span>ดูว่าคลิปแบบไหนมีคนดูเยอะ</span></div>
+      <div class="metric"><b>ผู้ติดตามใหม่</b><span>ดูว่าคนสนใจช่องมากขึ้นหรือเปล่า</span></div>
+      <div class="metric"><b>คนทักแชท</b><span>ดูว่ามีคนอยากใช้บริการจริงกี่คน</span></div>
+      <div class="metric"><b>ลูกค้าจากคลิป</b><span>ตัวเลขนี้สำคัญที่สุด เพราะเป็นเงินที่เข้าร้าน</span></div>
+    </div>
+    <ul class="todo">
+      <li><label><input type="checkbox" id="c6a"><span>ทำครบสัปดาห์ 1</span></label></li>
+      <li><label><input type="checkbox" id="c6b"><span>ทำครบสัปดาห์ 2</span></label></li>
+      <li><label><input type="checkbox" id="c6c"><span>ทำครบสัปดาห์ 3</span></label></li>
+      <li><label><input type="checkbox" id="c6d"><span>ทำครบสัปดาห์ 4 แล้วสรุปว่าคลิปแบบไหนได้ผลดีที่สุด</span></label></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>ช่องที่ไฮไลต์สีเหลือง คือข้อมูลที่ต้องเปลี่ยนเป็นของร้านจริง</span>
+  <button id="reset">ล้างเครื่องหมายติ๊ก</button>
+</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='tocarcare-guide-v1';
+  var state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  var boxes=[].slice.call(document.querySelectorAll('.todo input'));
+  var steps=[].slice.call(document.querySelectorAll('.step'));
+  var jump=document.getElementById('jump');
+  steps.forEach(function(s,i){
+    var a=document.createElement('a');a.href='#'+s.id;a.textContent=(i+1)+' '+s.dataset.title;jump.appendChild(a);
+  });
+  var links=[].slice.call(jump.children);
+  boxes.forEach(function(b){b.checked=!!state[b.id];b.addEventListener('change',function(){state[b.id]=b.checked;save();render()})});
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+  function render(){
+    var done=boxes.filter(function(b){return b.checked}).length;
+    document.getElementById('count').textContent=done+' / '+boxes.length+' ข้อ';
+    document.getElementById('fill').style.width=(done/boxes.length*100)+'%';
+    steps.forEach(function(s,i){
+      var bs=[].slice.call(s.querySelectorAll('.todo input'));
+      var ok=bs.length&&bs.every(function(b){return b.checked});
+      s.classList.toggle('complete',!!ok);links[i].classList.toggle('ok',!!ok);
+      links[i].textContent=(ok?'✓ ':(i+1)+' ')+s.dataset.title;
+    });
+  }
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=document.getElementById(btn.dataset.copy).innerText;
+      var done=function(){btn.textContent='คัดลอกแล้ว';setTimeout(function(){btn.textContent='คัดลอก'},1500)};
+      if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,function(){btn.textContent='คัดลอกไม่ได้ ให้กดค้างที่ข้อความแทน'})}
+    });
+  });
+  document.getElementById('reset').addEventListener('click',function(){state={};save();boxes.forEach(function(b){b.checked=false});render()});
+  render();
+})();
+</script>
