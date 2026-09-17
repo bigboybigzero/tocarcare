@@ -97,6 +97,15 @@ ul.todo{list-style:none;margin:0;padding:0;display:grid;gap:2px}
 .dont strong{font-family:var(--display);color:var(--warn);display:block;font-size:14px}
 .dont ul{margin:4px 0 0;padding-left:1.2em}
 
+ol.chain{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:c}
+ol.chain li{position:relative;display:grid;gap:0;padding:8px 0 14px 34px;counter-increment:c}
+ol.chain li::before{content:counter(c);position:absolute;left:0;top:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:var(--paper);font:600 13px/24px var(--display);text-align:center}
+ol.chain li:not(:last-child)::after{content:"";position:absolute;left:11px;top:34px;bottom:0;width:2px;background:var(--line)}
+ol.chain li:last-child::before{background:var(--done)}
+ol.chain b{font-family:var(--display);font-weight:600}
+ol.chain span{color:var(--ink-soft);font-size:15px}
+.note{font-size:14px;color:var(--ink-soft)}
+
 /* plan table */
 .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
 table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
@@ -248,25 +257,42 @@ html{scroll-behavior:smooth}
 <section class="step" id="sg" data-title="รีวิว Google Maps">
   <div class="num">6</div>
   <div class="body">
-    <div class="when">ตั้งค่าครั้งเดียว แล้วขอรีวิวจากลูกค้าทุกคัน · เป้าหมายเดือนแรก 10 รีวิว</div>
-    <h2>เก็บรีวิวใน Google Maps จากลูกค้าจริง</h2>
-    <div class="why"><strong>ทำเพื่ออะไร</strong>คนที่ค้นว่า "ล้างรถใกล้ฉัน" มักเลือกร้านที่มีดาวและรีวิวเยอะกว่า รีวิวที่เล่าว่ามาทำอะไร เช่น ล้างห้องเครื่องหรือซักเบาะ ยังช่วยให้ร้านขึ้นในผลค้นหาของบริการนั้นด้วย</div>
+    <div class="when">ร้านมีหมุดใน Google Maps แล้ว · เป้าหมายเดือนแรก 10 รีวิวใหม่</div>
+    <h2>วางแผนให้ลูกค้ามารีวิวร้านใน Google Maps</h2>
 
-    <h3 class="sub">ตั้งค่าครั้งเดียว</h3>
-    <ul class="todo">
-      <li><label><input type="checkbox" id="cga"><span>เข้า <b>business.google.com</b> แล้วสร้างหรือขอเป็นเจ้าของหมุดร้าน จากนั้นยืนยันตัวตนตามที่ Google ให้ทำ เช่น ถ่ายวิดีโอหน้าร้าน</span></label></li>
-      <li><label><input type="checkbox" id="cgb"><span>เลือกประเภทธุรกิจเป็น <b>"บริการล้างรถ"</b> แล้วเพิ่มบริการ ได้แก่ ล้างรถ ซักเบาะ และล้างห้องเครื่อง</span></label></li>
-      <li><label><input type="checkbox" id="cgc"><span>ลงรูปอย่างน้อย 10 รูป ได้แก่ ป้ายหน้าร้าน ทางเข้า ที่นั่งรอ และภาพก่อน–หลัง</span></label></li>
-      <li><label><input type="checkbox" id="cgd"><span>กด <b>"ขอรีวิว"</b> (Ask for reviews) ในหน้าจัดการร้าน แล้วคัดลอกลิงก์รีวิวของร้านเก็บไว้</span></label></li>
-      <li><label><input type="checkbox" id="cge"><span>นำลิงก์ไปสร้าง QR Code แล้วพิมพ์ติดไว้ที่ที่นั่งรอและจุดรับรถ</span></label></li>
-    </ul>
+    <div class="why"><strong>ทำไมสำคัญมาก</strong>คนที่อยากล้างรถส่วนใหญ่ไม่ได้เริ่มจาก TikTok แต่จะหยิบมือถือขึ้นมาค้นว่า <b>"ล้างรถใกล้ฉัน"</b> หรือ <b>"คาร์แคร์ พิษณุโลก"</b> แล้วเลือกจากร้านที่ขึ้นในแผนที่<br>ซึ่ง Google เองก็บอกไว้ว่าจำนวนรีวิวและคะแนนดาวเป็นส่วนหนึ่งที่ใช้ตัดสินว่าจะให้ร้านไหนขึ้นก่อน ร้านที่มีรีวิวน้อยจึงถูกเห็นน้อยกว่า แม้จะทำงานดีกว่าก็ตาม</div>
 
-    <h3 class="sub">ทำกับลูกค้าทุกคัน</h3>
+    <h3 class="sub">ทำแล้วจะส่งผลอย่างไร</h3>
+    <ol class="chain">
+      <li><b>รีวิวเพิ่มขึ้น</b><span>ลูกค้าจริงเล่าว่ามาล้างรถ ซักเบาะ หรือล้างห้องเครื่องที่อรัญญิก</span></li>
+      <li><b>Google มองว่าร้านน่าเชื่อถือ</b><span>ร้านมีโอกาสขึ้นสูงขึ้นเมื่อคนแถวนั้นค้นหาบริการล้างรถ</span></li>
+      <li><b>คนเห็นดาวแล้วมั่นใจ</b><span>เทียบกับร้านข้างเคียงแล้ว ลูกค้าเลือกร้านที่มีคนยืนยันว่าดีจริง</span></li>
+      <li><b>กดโทรหรือกดนำทางมาร้าน</b><span>นี่คือลูกค้าใหม่ที่ไม่ต้องจ่ายค่าโฆษณา</span></li>
+      <li><b>ลูกค้าใหม่ก็รีวิวต่อ</b><span>วนกลับไปข้อแรก ยิ่งทำนาน ร้านยิ่งแข็งแรง</span></li>
+    </ol>
+    <p class="note">รีวิวไม่ได้ส่งผลในวันเดียว มักต้องใช้เวลาหลายสัปดาห์กว่าจะเห็นความต่าง ดูผลได้ในหน้าจัดการร้านของ Google (ส่วนประสิทธิภาพ) ซึ่งบอกจำนวนคนที่กดโทร กดนำทาง และค้นเจอร้าน</p>
+
+    <h3 class="sub">แผน 4 สัปดาห์</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>ช่วง</th><th>ทำอะไร</th><th>เป้าหมาย</th></tr></thead>
+        <tbody>
+          <tr><td>สัปดาห์ 1</td><td>เตรียมลิงก์รีวิว ทำ QR ติดร้าน ซ้อมประโยคขอรีวิว และส่ง LINE ขอรีวิวจากลูกค้าประจำที่เคยมา</td><td>3 รีวิว</td></tr>
+          <tr><td>สัปดาห์ 2</td><td>ขอรีวิวจากลูกค้าทุกคันตอนส่งมอบรถ และตอบรีวิวที่เข้ามาทุกอัน</td><td>+2 รีวิว</td></tr>
+          <tr><td>สัปดาห์ 3</td><td>ทำคลิปขอบคุณลูกค้าที่รีวิว แล้วลง TikTok และเพจ (ต้องขออนุญาตก่อน)</td><td>+2 รีวิว</td></tr>
+          <tr><td>สัปดาห์ 4</td><td>นับรีวิวและคะแนนดาว ดูในหน้าจัดการร้านว่ามีคนกดโทรหรือกดนำทางเพิ่มขึ้นไหม</td><td>รวม 10 รีวิว</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">เช็กลิสต์</h3>
     <ul class="todo">
-      <li><label><input type="checkbox" id="cgf"><span>ขอรีวิวตอน <b>ส่งมอบรถ</b> ซึ่งเป็นตอนที่ลูกค้าเพิ่งเห็นรถสะอาด พร้อมชี้ให้สแกน QR ทันที</span></label></li>
-      <li><label><input type="checkbox" id="cgg"><span>ลูกค้าที่รีบกลับ ให้ส่งลิงก์รีวิวทาง LINE หรือแชทเพจภายในวันนั้น โดยใช้ข้อความด้านล่าง</span></label></li>
-      <li><label><input type="checkbox" id="cgh"><span>ตอบทุกรีวิวภายใน 1–2 วัน รวมถึงรีวิวที่ติด ให้ขอบคุณและบอกว่าจะปรับปรุงอะไร</span></label></li>
-      <li><label><input type="checkbox" id="cgi"><span>ทุกวันอาทิตย์ จดจำนวนรีวิวและคะแนนดาวไว้ดูว่าเพิ่มขึ้นหรือเปล่า</span></label></li>
+      <li><label><input type="checkbox" id="cgd"><span>เข้าหน้าจัดการร้านใน Google แล้วกด <b>"ขอรีวิว"</b> (Ask for reviews) เพื่อคัดลอกลิงก์รีวิวของร้าน</span></label></li>
+      <li><label><input type="checkbox" id="cge"><span>นำลิงก์ไปทำ QR Code แล้วพิมพ์ติดไว้ที่ที่นั่งรอและจุดรับรถ</span></label></li>
+      <li><label><input type="checkbox" id="cgj"><span>ส่งข้อความขอรีวิวให้ลูกค้าประจำที่เคยมาใช้บริการ</span></label></li>
+      <li><label><input type="checkbox" id="cgf"><span>ขอรีวิวจากลูกค้าทุกคันตอน <b>ส่งมอบรถ</b> ซึ่งเป็นตอนที่ลูกค้าเพิ่งเห็นรถสะอาดและพอใจที่สุด</span></label></li>
+      <li><label><input type="checkbox" id="cgh"><span>ตอบทุกรีวิวภายใน 1–2 วัน รวมถึงรีวิวที่ติด เพราะคนที่ค้นเจอร้านจะอ่านคำตอบของร้านด้วย</span></label></li>
+      <li><label><input type="checkbox" id="cgi"><span>ทุกวันอาทิตย์ จดจำนวนรีวิว คะแนนดาว และจำนวนคนที่กดโทรหรือกดนำทาง</span></label></li>
     </ul>
 
     <div class="ex">
@@ -287,7 +313,7 @@ html{scroll-behavior:smooth}
     </div>
 
     <div class="dont">
-      <strong>ห้ามทำ เพราะขัดกฎของ Google และรีวิวอาจถูกลบ</strong>
+      <strong>ห้ามทำ เพราะขัดกฎของ Google รีวิวอาจถูกลบ และร้านอาจถูกลงโทษ</strong>
       <ul>
         <li>จ้างคนมารีวิว หรือให้เพื่อน ญาติ และลูกน้องมารีวิวแทนลูกค้า</li>
         <li>ให้ส่วนลดหรือของแถมแลกกับการรีวิว</li>
@@ -308,7 +334,7 @@ html{scroll-behavior:smooth}
       <table>
         <thead><tr><th>สัปดาห์</th><th>ธีม</th><th>ตัวอย่างคลิป</th></tr></thead>
         <tbody>
-          <tr><td>สัปดาห์ 1</td><td>ก่อน–หลัง</td><td>ใช้ 3 สคริปต์จากขั้นที่ 3 · ตั้งค่าร้านใน Google และติด QR สำหรับรีวิว</td></tr>
+          <tr><td>สัปดาห์ 1</td><td>ก่อน–หลัง</td><td>ใช้ 3 สคริปต์จากขั้นที่ 3 · ติด QR สำหรับรีวิว Google ที่ร้าน</td></tr>
           <tr><td>สัปดาห์ 2</td><td>ความรู้สั้นๆ</td><td>"ทำไมควรล้างห้องเครื่อง" · "เบาะมีกลิ่นอับเกิดจากอะไร" · "ราคาแต่ละบริการ"</td></tr>
           <tr><td>สัปดาห์ 3</td><td>ให้คนรู้จักช่างโต้</td><td>หนึ่งวันในร้าน · ลูกค้าจริงเล่าความรู้สึกหลังรับรถ · รถคันที่หนักที่สุดของเดือน</td></tr>
           <tr><td>สัปดาห์ 4</td><td>ชวนมาร้าน</td><td>โปรพิเศษสำหรับคนอรัญญิก · ทำคลิปแบบเดียวกับคลิปที่มีคนดูเยอะที่สุด</td></tr>
